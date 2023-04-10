@@ -1,0 +1,79 @@
+<meta charset="Utf-8">
+
+<h1> Calculadora de pacientes e ganhos semanais para atendimento clínico</h1>
+
+<script>
+
+	function pulaLinha() {
+		document.write("<br>");
+	}
+
+	function mostra(frase) {
+
+		document.write(frase);
+		pulaLinha();
+	}
+5 
+	//Relação de pacientes do convênio.
+
+	var nome = prompt("Digite seu nome.");
+	var valorPacientesConvenio = parseFloat(prompt(nome + ", Informe o valor cobrado por pacientes do convênio:"));
+	var pacientesAgendadosConvenio = parseInt(prompt(nome + ", Informe a quantidade de pacientes agendados pelo convênio:"));
+	var pacientesConfirmadosConvenio = parseInt(prompt(nome + ", Informe a quantidade de pacientes confirmados pelo convênio:"));
+	var pacientesDesistentesConvenio = pacientesAgendadosConvenio - pacientesConfirmadosConvenio;
+	var totalAReceberConvenio = pacientesAgendadosConvenio * valorPacientesConvenio;
+
+
+	//Relação de pacientes para serviço social.
+	var valorPacienteSocial = parseFloat(prompt(nome + ", Informe o valor cobrado por pacientes com valor social:"));
+	var pacientesAgendadosSocial = parseInt(prompt(nome + ", Informe a quantidade de pacientes agendados por valor social:"));
+	var pacientesConfirmadosSocial = parseInt(prompt(nome + ", Informe a quantidade de pacientes confirmados por valor social:"));
+	var pacientesDesistentesSocial = pacientesAgendadosSocial - pacientesConfirmadosSocial;
+	var totalAReceberSocial = pacientesAgendadosSocial * valorPacienteSocial;
+
+	//Relação de pacientes para serviço particular.
+	var valorPacienteParticular = parseFloat(prompt(nome + ", Informe o valor cobrado por pacientes particulares:"));
+	var pacientesAgendadosParticular = parseInt(prompt(nome + ", Informe a quantidade de pacientes particulares agendados:"));
+	var pacientesConfirmadosParticular = parseInt(prompt(nome + ", Informe a quantidade de pacientes particulares confirmados:"));
+	var pacientesDesistentesParticular = pacientesAgendadosParticular - pacientesConfirmadosParticular;
+	var totalAReceberParticular = pacientesAgendadosParticular * valorPacienteParticular;
+
+	//Cálculo sobre os totais de pacientes.
+	var totalPacientesConfirmados = pacientesConfirmadosConvenio + pacientesConfirmadosSocial + pacientesConfirmadosParticular;
+
+	var totalPacientesAgendados = pacientesAgendadosConvenio + pacientesAgendadosSocial + pacientesAgendadosParticular;
+
+	var totalPacientesDesistentes = pacientesDesistentesConvenio + pacientesDesistentesSocial + pacientesDesistentesParticular;
+
+	//Cálculo do valor líquido a receber.
+	var totalAReceber = totalAReceberConvenio + totalAReceberSocial + totalAReceberParticular;
+	var totalRecebido = (pacientesConfirmadosConvenio * valorPacientesConvenio) + (pacientesConfirmadosSocial * valorPacienteSocial) + (pacientesConfirmadosParticular * valorPacienteParticular);
+
+	//convênio
+	mostra("Valor cobrado por paciente do convênio = R$" + valorPacientesConvenio);
+	mostra("Pacientes agendados pelo convênio = " + pacientesAgendadosConvenio);
+	mostra("Pacientes do convênio confirmados = " + pacientesConfirmadosConvenio);
+	mostra("Pacientes do convênio que desistiram = " + pacientesDesistentesConvenio);
+	pulaLinha();
+
+	//social
+	mostra("Valor cobrado para pacientes do serviço social = R$" + valorPacienteSocial);
+	mostra("Pacientes agendados com valor social = " + pacientesAgendadosSocial);
+	mostra("Pacientes com valor social confirmadors = " + pacientesConfirmadosSocial);
+	mostra("Pacientes com valor social desistentes = " + pacientesDesistentesSocial);
+	pulaLinha();
+
+	//particular
+	mostra("Valor cobrado para pacientes particular = R$" + valorPacienteParticular);
+	mostra("Pacientes agendados para serviço particular = " + pacientesAgendadosParticular);
+	mostra("Pacientes para serviço particular confirmados = " + pacientesConfirmadosParticular);
+	mostra("Pacientes do serviço particular que desistiram = " + pacientesDesistentesParticular);
+	pulaLinha();
+
+	//recebiveis
+	mostra(nome + ", O valor total recebido = R$" + totalRecebido);
+	pulaLinha();
+
+	mostra("Se todos os pacientes estivessem sido atendidos o valor a receber seria de R$" + totalAReceber);
+</script>
+
